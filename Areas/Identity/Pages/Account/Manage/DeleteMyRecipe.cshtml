@@ -1,0 +1,53 @@
+﻿@page
+@model NewFoodie.Areas.Identity.Pages.Account.Manage.DeleteMyRecipeModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div>
+    <a asp-page="./CheckMyRecipes">Back to List</a>
+</div>
+<br />
+
+<h1>Delete Recipe</h1>
+<br />
+<h5>Are you sure you want to delete this recipe permanently?</h5>
+<br />
+
+<div>
+    <h3>@Html.DisplayFor(model => model.Recipe.Name)</h3>
+    <img src="data:image/jpg;base64,@Model.Recipe.ImageData" width="300px" height="200px"></img>
+    <br />
+    <br />
+
+    <h4>Ingredients</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Ingredient</th>
+                <th> Amout</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.RecipeItems)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>Cooking Steps</h4>
+    @Html.DisplayFor(model => model.Recipe.CookingSteps)
+
+    <br /> <br />
+
+    <h4>Introduction</h4>
+    @Html.DisplayFor(model => model.Recipe.Introduction)
+
+    <form method="post" style="margin-top: 3vh">
+        <input type="hidden" asp-for="Recipe.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>

@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div align="center" style="margin-top: 10vh">
+    <img src="/images/slogan.jpg" class="ml-1 mr-3" style="max-height: 200px" />
+</div>
+
+<!-- Search  -->
+<div class="container" style="margin-top: 3vh">
+    <div class="row mb-2 bg-light">
+        <div class="col my-2 py-1 d-flex justify-content-center">
+            <form class="form-inline" method="post">
+                <select asp-for="@Model.RecipeCriteria.SearchCategory" class="form-control rounded-border" style="min-width: 10rem" asp-items="@Model.SearchCategories">
+                    <option value="">Please select what to search</option>
+                    <option value="Recipe">Recipe</option>
+                    <option value="Ingredient">Ingredient</option>
+                </select>
+                <input type="text" asp-for="@Model.RecipeCriteria.SearchCriterion" class="form-control rounded-border mx-2" style="min-width: 30rem" placeholder="Recipe Name or Ingredient" />
+                <button type="submit" class="btn btn-success mx-2">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

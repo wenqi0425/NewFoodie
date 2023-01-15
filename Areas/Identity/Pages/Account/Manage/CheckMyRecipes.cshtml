@@ -1,0 +1,47 @@
+﻿@page
+@model NewFoodie.Areas.Identity.Pages.Account.Manage.CheckMyRecipesModel
+@{
+    ViewData["Title"] = "My Recipes";
+    ViewData["ActivePage"] = ManageNavPages.CheckMyRecipes;
+}
+
+<h3> My Recipes</h3>
+
+<div style="margin-top: 3vh">
+    <a asp-page="./CreateNewRecipe">Create New Recipe</a>
+</div>
+
+<table class="table" style="margin-top: 3vh">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe.ImageData)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recipe in Model.MyRecipes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(r => recipe.Name)
+                </td>                
+                <td>
+                    <img src="data:image/jpg;base64,@recipe.ImageData" width="300px" height="200px"></img>
+                </td>
+                <td>
+                    <a asp-page="./EditRecipe" asp-route-recipeId="@recipe.Id">Edit</a> |
+                    <a asp-page="./MyRecipeDetails" asp-route-recipeId="@recipe.Id">Details</a> |
+                    <a asp-page="./DeleteMyRecipe" asp-route-recipeId="@recipe.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
