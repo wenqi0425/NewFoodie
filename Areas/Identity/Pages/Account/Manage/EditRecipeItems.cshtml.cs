@@ -3,7 +3,6 @@ using NewFoodie.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using System.IO;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
