@@ -1,0 +1,69 @@
+﻿@page
+@using NewFoodie.Services.Interfaces;
+@inject IRecipeService RecipeService;
+@inject IRecipeItemService RecipeItemService;
+@model NewFoodie.Areas.Identity.Pages.Account.Manage.EditRecipeItemsModel
+@{
+    ViewData["Title"] = "Edit Ingredient";
+}
+
+<div>
+    <a asp-page="./EditRecipe" asp-route-recipeId="@Model.Recipe.Id">Back to Recipe</a>
+</div>
+<br />
+
+<h1> Edit Ingredient</h1>
+<br />
+
+<h3> @Model.Recipe.Name</h3>
+
+<br />
+<div class="col-md-4" style="min-width: 40rem">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!--Ingredient List-->
+        <h7 style="color:blue"> Note: The ingredient name can not be the same.</h7>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Ingredient</th>
+                    <th> Amout</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <input type="hidden" asp-for="RecipeItem1.Id" />
+                    <td><input asp-for="@Model.RecipeItem1.Name" class="form-control" /></td>
+                    <td><input asp-for="@Model.RecipeItem1.Amount" class="form-control" /></td>                   
+                </tr>
+                <tr>
+                    <input type="hidden" asp-for="RecipeItem2.Id" />
+                    <td><input asp-for="@Model.RecipeItem2.Name" class="form-control" /></td>
+                    <td><input asp-for="@Model.RecipeItem2.Amount" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <input type="hidden" asp-for="RecipeItem3.Id" />
+                    <td><input asp-for="@Model.RecipeItem3.Name" class="form-control" /></td>
+                    <td><input asp-for="@Model.RecipeItem3.Amount" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <input type="hidden" asp-for="RecipeItem4.Id" />
+                    <td><input asp-for="@Model.RecipeItem4.Name" class="form-control" /></td>
+                    <td><input asp-for="@Model.RecipeItem4.Amount" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <input type="hidden" asp-for="RecipeItem5.Id" />
+                    <td><input asp-for="@Model.RecipeItem5.Name" class="form-control" /></td>
+                    <td><input asp-for="@Model.RecipeItem5.Amount" class="form-control" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="Recipe.Id" />
+            <input type="submit" value="Update" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

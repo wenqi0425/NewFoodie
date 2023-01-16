@@ -5,9 +5,9 @@ namespace NewFoodie.Services.Interfaces
 {
     public interface IRecipeItemService
     {
-        void AddRecipeItem(RecipeItem recipe);
-        void DeleteRecipeItem(RecipeItem recipe);
-        void EditRecipeItem(RecipeItem recipe);
+        void AddRecipeItem(RecipeItem recipeItem);
+        void DeleteRecipeItem(RecipeItem recipeItem);
+        void EditRecipeItem(RecipeItem recipeItem);
         IEnumerable<RecipeItem> GetRecipeItemsByRecipeId(int recipeId);
         IEnumerable<Recipe> SearchRecipes(string ingredient);
     }

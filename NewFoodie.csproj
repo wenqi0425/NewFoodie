@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\Account\Manage\EditRecipeItems.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="3.4.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
@@ -42,6 +46,7 @@
     <None Include="Areas\Identity\Pages\Account\Manage\DeletePersonalData.cshtml" />
     <None Include="Areas\Identity\Pages\Account\Manage\Disable2fa.cshtml" />
     <None Include="Areas\Identity\Pages\Account\Manage\DownloadPersonalData.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\EditRecipeItems.cshtml" />
     <None Include="Areas\Identity\Pages\Account\Manage\EditRecipe.cshtml" />
     <None Include="Areas\Identity\Pages\Account\Manage\Email.cshtml" />
     <None Include="Areas\Identity\Pages\Account\Manage\EnableAuthenticator.cshtml" />

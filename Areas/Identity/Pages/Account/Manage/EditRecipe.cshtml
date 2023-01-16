@@ -32,10 +32,14 @@
         </table>
         <br />
 
-        <!--Ingredient List-->
-        <h7 style="color:blue"> Note: The ingredient name can not be the same.</h7>
-        <p style="color:blue"> Please don't delete the first ingredient. </p>
+        <!--Edit Ingredient-->
+        <div>
+            <a asp-page="./EditRecipeItems" asp-route-recipeId="@Model.Recipe.Id">Edit Ingredients</a>
+        </div>
+        <br />
 
+
+        <!--Ingredient List-->
         <table class="table">
             <thead>
                 <tr>
@@ -45,29 +49,69 @@
             </thead>
             <tbody>
                 <tr>
-                    <input type="hidden" asp-for="RecipeItem1.Id" />
-                    <td><input asp-for="@Model.RecipeItem1.Name" class="form-control" /></td>
-                    <td><input asp-for="@Model.RecipeItem1.Amount" class="form-control" /></td>                   
+                    @if (@Model.RecipeItem1 == null)
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="RecipeItem1.Id" />
+                        <td>@Model.RecipeItem1.Name</td>
+                        <td>@Model.RecipeItem1.Amount</td>
+                    }                    
                 </tr>
                 <tr>
-                    <input type="hidden" asp-for="RecipeItem1.Id" />
-                    <td><input asp-for="@Model.RecipeItem2.Name" class="form-control" /></td>
-                    <td><input asp-for="@Model.RecipeItem2.Amount" class="form-control" /></td>
+                    @if (@Model.RecipeItem2 == null)
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="RecipeItem2.Id" />
+                        <td>@Model.RecipeItem2.Name</td>
+                        <td>@Model.RecipeItem2.Amount</td>
+                    }
                 </tr>
                 <tr>
-                    <input type="hidden" asp-for="RecipeItem1.Id" />
-                    <td><input asp-for="@Model.RecipeItem3.Name" class="form-control" /></td>
-                    <td><input asp-for="@Model.RecipeItem3.Amount" class="form-control" /></td>
+                    @if (@Model.RecipeItem3 == null)
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="RecipeItem3.Id" />
+                        <td>@Model.RecipeItem3.Name</td>
+                        <td>@Model.RecipeItem3.Amount</td>
+                    }
                 </tr>
                 <tr>
-                    <input type="hidden" asp-for="RecipeItem1.Id" />
-                    <td><input asp-for="@Model.RecipeItem4.Name" class="form-control" /></td>
-                    <td><input asp-for="@Model.RecipeItem4.Amount" class="form-control" /></td>
+                    @if (@Model.RecipeItem4 == null)
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="RecipeItem4.Id" />
+                        <td>@Model.RecipeItem4.Name</td>
+                        <td>@Model.RecipeItem4.Amount</td>
+                    }
                 </tr>
                 <tr>
-                    <input type="hidden" asp-for="RecipeItem1.Id" />
-                    <td><input asp-for="@Model.RecipeItem5.Name" class="form-control" /></td>
-                    <td><input asp-for="@Model.RecipeItem5.Amount" class="form-control" /></td>
+                    @if (@Model.RecipeItem5 == null)
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="RecipeItem5.Id" />
+                        <td>@Model.RecipeItem5.Name</td>
+                        <td>@Model.RecipeItem5.Amount</td>
+                    }
                 </tr>
             </tbody>
         </table>
