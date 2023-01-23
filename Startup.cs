@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using NewFoodie.Models;
 using NewFoodie.Services.Interfaces;
@@ -27,8 +22,6 @@ namespace NewFoodie
             Configuration = configuration;
         }
 
-
-
         public IConfiguration Configuration { get; }
 
         // To tell the container to produce instances by the runtime, methods to register services in container
@@ -38,13 +31,18 @@ namespace NewFoodie
                options.UseSqlServer(
                    Configuration.GetConnectionString("LocalConnection")));
 
+            // AddTransient is an method of Microsoft.Extensions.DependencyInjection package.
+            // Register a service as transient,
+            // i.e., to create a new instance of the service with the dependency injection (DI) container.
             services.AddTransient<IRecipeService, EFRecipeService>();
             services.AddTransient<IRecipeItemService, EFRecipeItemService>();
             services.AddTransient<IEmailSender, EmailService>();
             services.AddTransient<ISearchService, SearchService>();
 
+            //Enables Razor Pages in the application. Registers routing, options with the dependency injection(DI) container and Pages views.
             services.AddRazorPages();
 
+            // Identity: authentication and authorization 
             services.AddIdentity<AppUser, IdentityRole<int>>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
@@ -61,10 +59,11 @@ namespace NewFoodie
 
                 // Lockout options:
                 options.Lockout.AllowedForNewUsers = true;
+
+                // if access attempt fail 3 times, then the accout will be locked by 10 mins. 
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
                 options.Lockout.MaxFailedAccessAttempts = 3;
             });
-
         }
 
         // to configure the HTTP request pipeline by the runtime.
@@ -75,7 +74,7 @@ namespace NewFoodie
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-            else     // IsEnvironment, IsProduction
+            else   // IsEnvironment, IsProduction  
             {
                 app.UseExceptionHandler("/Error");  
                 app.UseHsts();  // for SSL security(https)
@@ -86,7 +85,7 @@ namespace NewFoodie
 
             app.UseRouting();
 
-            app.UseAuthentication();  // valid user? (password, username, emailConfirmed?)
+            app.UseAuthentication();  // valid user (password, username, emailConfirmed?)
             app.UseAuthorization();   // Authorities, role
 
             app.UseEndpoints(endpoints =>

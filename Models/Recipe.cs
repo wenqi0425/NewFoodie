@@ -23,6 +23,9 @@ namespace NewFoodie.Models
         [Display(Name = "Image:")]
         public string ImageData { get; set; }
 
+        // ORM: Object Relationship Mapping. 
+        // To map the C# data model to database table, then can map the C# instance to data row.
+        // Don't map this attribute into the database
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 

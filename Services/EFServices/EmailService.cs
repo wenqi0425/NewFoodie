@@ -14,7 +14,7 @@ namespace NewFoodie.Services.EFServices
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("NewFoodie Administration", "foodieDK@outlook.com"));
+            message.From.Add(new MailboxAddress("Foodie Administration", "foodieDK@outlook.com"));
             message.To.Add(new MailboxAddress("", $"{email}"));
             message.Subject = $"{subject}";
 

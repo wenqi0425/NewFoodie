@@ -13,6 +13,9 @@ namespace NewFoodie.Areas.Identity.Pages.Account.Manage
     [BindProperties]
     public class EditRecipeItemsModel : PageModel
     {
+        [TempData]
+        public string StatusMessage { get; set; }
+
         public Recipe Recipe { get; set; }  
         public RecipeItem RecipeItem1 { get; set; }
         public RecipeItem RecipeItem2 { get; set; }
@@ -106,6 +109,8 @@ namespace NewFoodie.Areas.Identity.Pages.Account.Manage
                 //if found newly created items, then saving them
                 newItems.ForEach(item => saveNewlyAddedItem(Recipe, item, itemNameExisted, _recipeItemService));
             }
+
+            StatusMessage = "Your ingredient list has been changed.";
 
             return Page();
         }
