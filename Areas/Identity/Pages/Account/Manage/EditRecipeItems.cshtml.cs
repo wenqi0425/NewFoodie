@@ -13,7 +13,6 @@ namespace NewFoodie.Areas.Identity.Pages.Account.Manage
     [BindProperties]
     public class EditRecipeItemsModel : PageModel
     {
-        [TempData]
         public string StatusMessage { get; set; }
 
         public Recipe Recipe { get; set; }  
