@@ -74,14 +74,17 @@ namespace NewFoodie.Areas.Identity.Pages.Account.Manage
             // otherwise updating image by new uploading
             if (Recipe.ImageFile != null)
             {
+                // using statement for resource management to create an instance of a Stream object
                 using (Stream s = Recipe.ImageFile.OpenReadStream())
                 {
+                    // ReadBytes() reads the image file into a byte array, then store it in the variable bytes.
                     using (BinaryReader r = new BinaryReader(s))
                     {
                         bytes = r.ReadBytes((Int32)s.Length);
                     }
                 }
 
+                // converts bytes into a base64 encoded string and stored in the variable existedImageData.
                 existedImageData = Convert.ToBase64String(bytes, 0, bytes.Length);
             }
             else

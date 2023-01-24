@@ -22,6 +22,7 @@ namespace NewFoodie.Pages.Recipes
         public string ScreenMessage { get; set; }
         public SelectList SearchCategories { get; set; }
 
+        // Get results from DB.
         [BindProperty(SupportsGet = true)] public RecipeCriteria RecipeCriteria { get; set; } = new RecipeCriteria();
 
         public void OnGet()

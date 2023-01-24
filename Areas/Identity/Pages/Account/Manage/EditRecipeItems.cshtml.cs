@@ -132,8 +132,11 @@ namespace NewFoodie.Areas.Identity.Pages.Account.Manage
         {
             // fullItems ref. to newly binded values from Front-end;
             // oldItems ref. to items fetched from DB.
-            // itemsForEditRefToPesisted ref. to the items that maybe updated by user again.
+            // itemsForEditRefToPesisted ref. to the items that maybe updated by user again. 
+            // Take oldItems size, e.g. 3 
             List<RecipeItem> itemsForEditRefToPesisted = fullItems.Take(oldItems.Count()).ToList();
+
+            // e.g. itemsForEditRefToPesisted.Count = 4
             for (int i = 0; i < itemsForEditRefToPesisted.Count; i++)
             {
                 // if both fields having been cleaned up, then delete this item from db.
